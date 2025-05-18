@@ -3959,12 +3959,12 @@ ul.wp-block-rss.is-grid li {
 }
 
 :where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-deviantart {
-  background-color: #02e49b;
+  background-color: #d60059;
   color: #fff
 }
 
 :where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-discord {
-  background-color: #5865f2;
+  background-color: #d60059;
   color: #fff
 }
 
@@ -4696,7 +4696,7 @@ a[data-fn].fn:after {
 }
 
 :root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background {
-  background: linear-gradient(135deg, #00d084, #0693e3)
+  background: linear-gradient(135deg, #d60059, #d60059)
 }
 
 :root .has-purple-crush-gradient-background {
@@ -4720,7 +4720,7 @@ a[data-fn].fn:after {
 }
 
 :root .has-midnight-gradient-background {
-  background: linear-gradient(135deg, #020381, #2874fc)
+  background: linear-gradient(135deg, #d60059, #d60059)
 }
 
 .has-regular-font-size {
