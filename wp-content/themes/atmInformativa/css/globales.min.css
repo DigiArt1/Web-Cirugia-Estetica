@@ -1901,8 +1901,7 @@ visibility: hidden;font-size: 16px;text-align: center;line-height: 15px;}
 }
 
 #access {
-    background: #fff;
-    display: block;
+    display: block !important;
     position: relative;
     width: 100%;
     transition: all 0.3s ease;
@@ -1919,13 +1918,17 @@ visibility: hidden;font-size: 16px;text-align: center;line-height: 15px;}
 @media only screen and (max-width: 980px) {
     #access {
         background: #fff;
-        display: none;
+        display: none !important;
         position: fixed;
         top: 45px;
         left: 0;
         width: 100%;
         z-index: 9999991;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    #access.acc_on {
+        display: block !important;
     }
     
     #menu {
