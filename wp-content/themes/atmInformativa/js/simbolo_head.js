@@ -1,13 +1,13 @@
-jQuery(function () {
+jQuery(function ($) {
     
     
-    jQuery('.ancla_top').click(function () {
-        var mi_ancla = jQuery("#content_header").height();
+    $('.ancla_top').click(function () {
+        var mi_ancla = $("#content_header").height();
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = jQuery(this.hash);
-            target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
             if (target.length) {
-                jQuery('html,body').animate({
+                $('html,body').animate({
                     scrollTop: target.offset().top - mi_ancla
                 }, 2500);
                 return false;
@@ -20,34 +20,19 @@ jQuery(function () {
    
 
 
-    $("#menu").click(function () {
-        let ani_acess = $('#access').hasClass('acc_off');
-         if (ani_acess) {
-            $('#access').removeClass('acc_off');
-            $('#access').addClass('acc_on');
-            $('#access').slideDown("slow");
-             
-            
+    $("#menu").on('click', function (e) {
+        e.preventDefault();
+        var $access = $('#access');
+        var $menu = $(this);
+        
+        if ($access.hasClass('acc_off')) {
+            $access.removeClass('acc_off').addClass('acc_on').slideDown("slow");
+            $menu.removeClass('off').addClass('on');
         } else {
-            $('#access').removeClass('acc_on');
-            $('#access').addClass('acc_off');
-            $('#access').slideUp("slow");
-          
-            
+            $access.removeClass('acc_on').addClass('acc_off').slideUp("slow");
+            $menu.removeClass('on').addClass('off');
         }
     });
-
-    jQuery('#menu').on('click', function () {
-        let mimenu = $('#menu').hasClass('off');
-        if (mimenu) {
-            $('#menu').removeClass('off');
-            $('#menu').addClass('on');
-        } else {
-            $('#menu').removeClass('on');
-            $('#menu').addClass('off');
-        }
-    });
-
 
     dect_w();
 

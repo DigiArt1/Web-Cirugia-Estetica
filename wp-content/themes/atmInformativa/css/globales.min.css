@@ -1899,3 +1899,37 @@ visibility: hidden;font-size: 16px;text-align: center;line-height: 15px;}
         width: 100%
     }
 }
+
+#access {
+    background: #fff;
+    display: block;
+    position: relative;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+#access.acc_off {
+    display: none;
+}
+
+#access.acc_on {
+    display: block;
+}
+
+@media only screen and (max-width: 980px) {
+    #access {
+        background: #fff;
+        display: none;
+        position: fixed;
+        top: 45px;
+        left: 0;
+        width: 100%;
+        z-index: 9999991;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    #menu {
+        display: inline-block;
+        margin-left: 15px;
+    }
+}
