@@ -1,0 +1,52 @@
+
+
+.quadmenu-text:hover {
+    color: #d60059 !important;
+}
+.quadmenu-text {
+    color: #c0346e !important;
+}
+
+.quadmenu-item-content {
+    color: #d60059 !important;
+}
+
+.quadmenu-item-content:hover {
+    color: #d60059 !important;
+}
+
+.section_archive {
+    background-color: #141313;
+}
+
+#arc_blog:before, #last_blog:before {
+    background-color: #d60059 !important;
+}
+
+
+.item_blog {
+    background-color: #bdbaba !important;
+    border-radius: 10px !important;
+}
+
+
+.cuadro {
+    background-color: #867979 !important;
+    border-radius: 10px !important;
+    margin: 20px !important;
+}
+
+
+
+.Hola {
+    color: #cb0b0b !important;
+    font-size: 45px;
+    font-weight: 600;
+    margin-top: 230px;
+}
+
+
+
+
+
+    
