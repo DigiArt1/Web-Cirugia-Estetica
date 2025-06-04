@@ -750,8 +750,10 @@
                     flex-wrap: wrap;
                     gap: 40px;
                     padding: 20px;
-                    perspective: 1000px;
+                    max-width: 1200px;
+                    margin: 0 auto;
                 }
+                
                 .card_medico {
                     text-decoration: none;
                     color: inherit;
@@ -761,35 +763,19 @@
                     overflow: hidden;
                     border-radius: 24px;
                     box-shadow: 0 15px 45px rgba(30,42,56,0.15);
-                    background: linear-gradient(145deg, #ffffff 60%, #f8f9fd 100%);
+                    background: #ffffff;
                     border: 1px solid rgba(214,0,89,0.1);
-                    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-                    transform-style: preserve-3d;
-                    backface-visibility: hidden;
+                    transition: all 0.4s ease;
                 }
-                .card_medico:focus-visible {
-                    outline: 3px solid #d60059;
-                    outline-offset: 3px;
-                }
-                .card_medico:hover, .card_medico:focus-visible {
-                    transform: translateY(-20px) rotateX(10deg) rotateY(-10deg);
-                    box-shadow: 0 30px 70px rgba(30,42,56,0.25), 
-                               0 15px 45px rgba(214,0,89,0.2),
-                               0 5px 15px rgba(0,0,0,0.1);
-                    border-color: rgba(214,0,89,0.3);
-                }
+
                 .card_medico img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
                     display: block;
-                    filter: brightness(0.95) contrast(1.1);
-                    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+                    transition: transform 0.8s ease;
                 }
-                .card_medico:hover img, .card_medico:focus-visible img {
-                    filter: brightness(1.2) contrast(1.3) saturate(1.2);
-                    transform: scale(1.15) translateZ(50px);
-                }
+
                 .card_overlay {
                     position: absolute;
                     inset: 0;
@@ -797,18 +783,12 @@
                     align-items: center;
                     justify-content: center;
                     background: linear-gradient(135deg, 
-                        rgba(214,0,89,0.8) 0%,
-                        rgba(30,42,56,0.85) 100%
+                        rgba(214,0,89,0.9) 0%,
+                        rgba(30,42,56,0.9) 100%
                     );
-                    opacity: 0;
-                    backdrop-filter: blur(3px);
-                    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+                    transition: all 0.4s ease;
                 }
-                .card_medico:hover .card_overlay, 
-                .card_medico:focus-visible .card_overlay {
-                    opacity: 1;
-                    transform: translateZ(75px);
-                }
+
                 .card_overlay h2 {
                     color: #fff;
                     font-size: 2.2rem;
@@ -818,85 +798,115 @@
                     letter-spacing: 0.5px;
                     line-height: 1.3;
                     padding: 0 15px;
-                    transform: translateY(50px) translateZ(-50px);
-                    opacity: 0;
-                    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+                    transform: translateY(0);
+                    transition: all 0.4s ease;
                 }
-                .card_medico:hover .card_overlay h2,
-                .card_medico:focus-visible .card_overlay h2 {
-                    transform: translateY(0) translateZ(100px);
-                    opacity: 1;
+
+                @media (hover: hover) {
+                    .card_overlay {
+                        opacity: 0;
+                    }
+                    
+                    .card_overlay h2 {
+                        transform: translateY(20px);
+                        opacity: 0;
+                    }
+
+                    .card_medico:hover .card_overlay,
+                    .card_medico:focus .card_overlay {
+                        opacity: 1;
+                    }
+
+                    .card_medico:hover .card_overlay h2,
+                    .card_medico:focus .card_overlay h2 {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+
+                    .card_medico:hover img,
+                    .card_medico:focus img {
+                        transform: scale(1.1);
+                    }
                 }
-                .card_medico::before {
-                    content: "";
-                    position: absolute;
-                    inset: -100% -50%;
-                    background: linear-gradient(120deg,
-                        transparent 0%,
-                        rgba(255, 255, 255, 0.116) 50%,
-                        transparent 100%
-                    );
-                    transform: rotate(45deg);
-                    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-                    z-index: 2;
+
+                @media (hover: none) {
+                    .card_overlay {
+                        opacity: 1;
+                        background: linear-gradient(135deg, 
+                        rgba(214, 0, 89, 0.562) 0%,
+                        rgba(30,42,56,0.85) 100%
+                        );
+                    }
+                    
+                    .card_overlay h2 {
+                        opacity: 1;
+                    }
+
+                    .card_medico {
+                        animation: cardPulse 3s infinite;
+                    }
                 }
-                .card_medico:hover::before {
-                    animation: shine 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+
+                @keyframes cardPulse {
+                    0%, 100% {
+                        transform: scale(1);
+                    }
+                    50% {
+                        transform: scale(1.02);
+                    }
                 }
-                @keyframes shine {
-                    0% { transform: translateX(-200%) rotate(45deg); }
-                    100% { transform: translateX(200%) rotate(45deg); }
-                }
+
                 @media (max-width: 900px) {
-                    .tarjetas-medico { gap: 30px; }
+                    .tarjetas-medico {
+                        gap: 30px;
+                        padding: 15px;
+                    }
                     .card_medico {
                         width: calc(50% - 15px);
                         height: 420px;
                     }
+                    .card_overlay h2 {
+                        font-size: 2rem;
+                    }
                 }
+
                 @media (max-width: 600px) {
                     .tarjetas-medico {
                         gap: 25px;
                         padding: 10px;
-                        perspective: none;
                     }
                     .card_medico {
                         width: 100%;
                         height: 380px;
-                    }
-                    .card_medico:hover {
-                        transform: translateY(-10px);
                     }
                     .card_overlay h2 {
                         font-size: 1.8rem;
                     }
                 }
             </style>
-            <!-- Tarjeta 1 -->
+
             <a href="Fitnes/Fitnes.html" class="card_medico" tabindex="0">
-                <img src="UNO.jpg" alt="Programa Fitness">
+                <img src="UNO.jpg" alt="Programa Fitness" loading="lazy">
                 <div class="card_overlay">
                     <h2>Programa de Fitness</h2>
                 </div>
             </a>
-            <!-- Tarjeta 2 -->
+
             <a href="Emocional/Emocional.html" class="card_medico" tabindex="0">
-                <img src="DOS.jpg" alt="Apoyo Emocional">
+                <img src="DOS.jpg" alt="Apoyo Emocional" loading="lazy">
                 <div class="card_overlay">
                     <h2>Apoyo Emocional<br>y Psicológico</h2>
                 </div>
             </a>
-            <!-- Tarjeta 3 -->
+
             <a href="Nutricion/Nutricion.html" class="card_medico" tabindex="0">
-                <img src="tres.png" alt="Programa Nutrición">
+                <img src="tres.png" alt="Programa Nutrición" loading="lazy">
                 <div class="card_overlay">
                     <h2>Programa de Nutrición</h2>
                 </div>
             </a>
         </div>
     </section>
-    
-    
 
     <footer id="content_footer" class="no_padding position-relative">
         <div class="cont_at">
