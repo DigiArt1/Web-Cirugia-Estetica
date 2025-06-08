@@ -57,6 +57,34 @@
         position: relative !important;
         z-index: 2 !important;
     }
+
+    /* Video container fixes for mobile */
+    video,
+    .video-container,
+    .elementor-video,
+    .elementor-widget-video {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 300px !important;
+        object-fit: cover !important;
+        margin: 0 auto !important;
+    }
+
+    .elementor-widget-video .elementor-wrapper {
+        padding-bottom: 56.25% !important; /* 16:9 Aspect Ratio */
+        position: relative !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .elementor-widget-video .elementor-wrapper iframe,
+    .elementor-widget-video .elementor-wrapper video {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
 }
 
 /* Additional fixes for very small screens */
